@@ -12,7 +12,7 @@
 
 }
 
-.preparation ul{
+.preparation ul, .preparation li{
 	list-style: none;
 }
 

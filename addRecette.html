@@ -25,7 +25,7 @@
 	</div>
 
 	<div class="containerPrincipal">
-		<input class="nom" type="text" placeholder="nom"/>
+		<input id="nom" type="text" placeholder="nom"/>
 		<select id="typePrincipal" onchange="comboChange()">
 			<option value="appéritifs">appéritif</option>
 			<option value="entrées">entrée</option>
@@ -35,31 +35,84 @@
 		<select id="typeSecondaire">
 		</select>
 		<div>
-			Temps de préparation : <input type="number"/> h <input type="number"/> min </br>
-			Temps de cuisson : <input type="number"/> h <input type="number"/> min
+			Temps de préparation : <input type="number" id="heurePrepa"/> h <input type="number" id="minPrepa"/> min </br>
+			Temps de cuisson : <input type="number" id="heureCuisson"/> h <input type="number" id="minuteCuisson"/> min
 		</div>
 		<div>
 			<div><button onclick="ajouterLigneIngredient()">Ajouter un ingredients</button></div>
 			<div>
-				<table class="listeRecette">
+				<table class="ingredients">
 					<thead>
 					   <tr class="ligne">
-					       <th class="colonne">Quantité</th>
-					       <th class="colonne">Unité de mesure</th>
-								 <th class="colonne">Nom</th>
+					       <th class="colonne" >Quantité</th>
+					       <th class="colonne" >Unité de mesure</th>
+								 <th class="colonne" >Nom</th>
 					       <th class="colonne"></th>
 					   </tr>
 				   </thead>
-				   <tbody class="tbody">
+				   <tbody id="tbody">
 
 				   </tbody>
 				</table>
 			</div>
 		</div>
+		<div>
+			<textarea id="preparation"></textarea>
+		</div>
+		<button onclick="addRecette()">Valider la recette</button>
 	</div>
 
 
 	<script>
+
+		function addRecette(){
+				var nom = document.getElementById("nom").value
+				var typePrincipal = document.getElementById("typePrincipal").value
+				var typeSecondaire = document.getElementById("typeSecondaire").value
+
+				if(document.getElementById("heurePrepa").value != "" && document.getElementById("minPrepa").value!= ""){
+					var tempsPreparation = document.getElementById("heurePrepa").value+" h "+document.getElementById("minPrepa").value+" min"
+				}else if(document.getElementById("heurePrepa").value == "" && document.getElementById("minPrepa").value!= ""){
+					var tempsPreparation = document.getElementById("minPrepa").value+" min"
+				}else if(document.getElementById("heurePrepa").value != "" && document.getElementById("minPrepa").value== ""){
+					var tempsPreparation = document.getElementById("heurePrepa").value+" h "
+				}
+
+				if(document.getElementById("heureCuisson").value != "" && document.getElementById("minuteCuisson").value!= ""){
+					var tempsCuisson = document.getElementById("heureCuisson").value+" h "+document.getElementById("minuteCuisson").value+" min"
+				}else if(document.getElementById("heureCuisson").value == "" && document.getElementById("minuteCuisson").value!= ""){
+					var tempsCuisson = document.getElementById("minuteCuisson").value+" min"
+				}else if(document.getElementById("heureCuisson").value != "" && document.getElementById("minuteCuisson").value== ""){
+					var tempsCuisson = document.getElementById("heureCuisson").value+" h "
+				}
+
+				var allQuantite = document.querySelectorAll('[id="quantite"]');
+				var allUnite = document.querySelectorAll('[id="unite"]');
+				var allNom = document.querySelectorAll('[id="nomIngredient"]');
+
+				var allIngredient = []
+				for(var i=0; i<allQuantite.length; i++){
+					allIngredient.push(allQuantite[i].value+allUnite[i].value+" "+allNom[i].value)
+				}
+
+				var preparation = document.getElementById("preparation").value
+
+				console.log(allIngredient)
+				switch(typePrincipal){
+					case "appéritifs":
+						var json = "jsonRecettesApperitifs['"+nom+"'] = ({'nom':'"+nom+"', 'type':'"+typeSecondaire+"','image':'','difficulte':1,'prepa':'"+tempsPreparation+"','cuisson':'"+tempsCuisson+"','nbPersonne':4,'prix':'5 euro','ingredients':{'':["
+						break;
+				}
+
+				for(var i=0; i<allIngredient.length-1; i++){
+					json += "'"+allIngredient[i]+"',"
+				}
+				json += "'"+allIngredient[allIngredient.length-1]+"'"
+				json += "]},'preparation':{'':['"+preparation+"']}"
+				json += "})"
+				var mailto_link = 'mailto:lespetitschefs.contact@gmail.com?subject=recette&body='+json;
+	 			win = window.open(mailto_link, 'emailWindow');
+		}
 
 		function supprimerIngredient(callElement){
 			var parent = callElement.parentElement.parentElement;
@@ -68,12 +121,12 @@
 
 		function ajouterLigneIngredient(){
 			var tr = 	"<tr class='ligne'>"
-										+"<td class='colonne'><input type='number'/> </td>"
-										+"<td class='colonne'><input type='text'</td>"
-										+"<td class='colonne'><input type='text'/></td>"
+										+"<td class='colonne'><input type='number' id='quantite'/> </td>"
+										+"<td class='colonne'><input type='text' id='unite'</td>"
+										+"<td class='colonne'><input type='text' id='nomIngredient'/></td>"
 										+"<td class='colonne'><button onclick='supprimerIngredient(this)'>supprimer</button></td>"
 									+"</tr>"
-			$(tr).appendTo($('.tbody'));
+			$(tr).appendTo($('#tbody'));
 		}
 
 		function completeSecondType(typePrincipal){
