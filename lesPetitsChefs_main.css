@@ -1,0 +1,97 @@
+body{
+	margin:0;
+	font-size: 20px;
+
+}
+
+.titre{
+	text-align: center;
+
+}
+
+.titre img{
+	width: 25%;
+}
+
+.logo{
+	width:100%;
+}
+
+.navbar{
+	width:250px;
+	background: pink ;
+	position: absolute;
+	top:5px;
+	display: none;
+	height: 99%;
+	top:0;
+}
+
+
+
+.imgMenu{
+	position: absolute;
+	top:5px;
+
+}
+
+.closeSidebar{
+	margin-left: 230px;
+	cursor: pointer;
+	width: 5%;
+}
+
+.closeSidebar:hover{
+	width: 6%;
+}
+
+.listeOnglet{
+	list-style: none;
+	margin:0;
+	padding-left: 5px;
+	margin-top: 20px;
+	width:220px;
+}
+
+.listeOnglet img{
+	width: 100%;
+}
+
+
+
+.listeOnglet li{
+	border-top: solid 3px white;
+	padding: 10px;
+}
+
+
+.containerPrincipal{
+	width: 70%;
+	margin-left: 15%;
+	margin-right: 15%;
+}
+
+.navbar a{
+	color:white;
+	text-decoration: none;
+	display: block;
+
+}
+
+.navbar a:hover{
+	color: black;
+}
+
+
+/*.listeOnglet img:hover{
+	width: 90%;
+}*/
+
+@media all and (max-width: 1200px){
+
+	.containerPrincipal{
+		width: 90%;
+		margin-left: 5%;
+		margin-right: 5%;
+	}
+}

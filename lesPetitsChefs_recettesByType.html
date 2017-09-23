@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+	<title>Les petits chefs</title>
+	<link rel="stylesheet" type="text/css" href="lesPetitsChefs_main.css">
+	<link rel="stylesheet" type="text/css" href="lesPetitsChefs_recettesByType.css">
+	<script src="lesPetitsChefs_recettes.js"></script>
+	<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  	<script src="lesPetitsChefs_utils.js"></script>
+</head>
+<body>
+	<h1 class="titre"></h1>
+
+	<img class="imgMenu" onclick="displayMenu()" src="burgerldpi.png"/>
+	<div class="navbar">
+		<img class="closeSidebar" onclick="displayMenu()" src="close_sidebar.png"/>
+		<img class="logo	" src="logo.png"/>
+		<ul class="listeOnglet">
+			<li><a href="lesPetitsChefs_recettesByType.html?type=appéritifs"><img src="apperitifs.png"></img></a></li>
+			<li><a href="lesPetitsChefs_recettesByType.html?type=entrées">entrée</a></li>
+			<li><a href="lesPetitsChefs_recettesByType.html?type=plats">plat</a></li>
+			<li><a href="lesPetitsChefs_recettesByType.html?type=desserts"><img src="dessert.png"></a></li>
+		</ul>
+	</div>
+
+	<div class="containerPrincipal">
+		<input id="searchbarRecette" type="text" onkeyup="searchBar()" placeholder="recherche"></input>
+		<select id="combo" onChange="combo()">
+		    <option id="option">Toutes</option>
+		</select>
+		<table class="listeRecette">
+			<thead>
+			   <tr class="ligne">
+			       <th class="colonne">Nom</th>
+			       <th class="colonne">Type</th>
+			       <th class="colonne">Difficulté</th>
+			       <th class="colonne">Temps de préparation</th>
+			       <th class="colonne">Temps de cuisson</th>
+			       <th class="colonne">Nombre de personne</th>
+			       <th class="colonne">prix moyen</th>
+			   </tr>
+		   </thead>
+		   <tbody class="tbody">
+
+		   </tbody>
+		</table>
+	</div>
+	<script type="text/javascript">
+		
+
+		var url_String = window.location.href;
+		var url = new URL(url_String);
+		var type = url.searchParams.get("type");
+		/*var titreType = type.charAt(0).toUpperCase() + type.slice(1);
+		var pType = "<p>"+titreType+"</p>"
+		$(pType).appendTo($(".titre"))*/
+
+
+		function completeCombo(typeSecondaire){
+			for(var i in typeSecondaire[type]){
+				var option = " <option id="+typeSecondaire[type][i]+">"+typeSecondaire[type][i]+"</option>"
+				$(option).appendTo($("#combo"));
+			}
+		}
+
+		function combo(){
+			var text = (document.getElementById('combo').value).toLowerCase();
+			var recettes = {};
+			switch(type){
+				case "appéritifs":
+					for(var nom in jsonRecettesApperitifs){
+						var recette = jsonRecettesApperitifs[nom];
+						if(recette.type.toLowerCase().includes(text) || text == "toutes"){
+							recettes[nom] = jsonRecettesApperitifs[nom];
+						}
+					}
+					break;
+				case "entrées":
+					for(var nom in jsonRecettesEntrees){
+						var recette = jsonRecettesEntrees[nom];
+						if(recette.type.toLowerCase().includes(text) || text == "toutes"){
+							recettes[nom] = jsonRecettesEntrees[nom];
+						}
+					}
+					break;
+				case "plats":
+					for(var nom in jsonRecettesPlats){
+						var recette = jsonRecettesPlats[nom];
+						if(recette.type.toLowerCase().includes(text) || text == "toutes"){
+							recettes[nom] = jsonRecettesPlats[nom];
+						}
+					}
+					break;
+				case "desserts":
+					for(var nom in jsonRecettesDesserts){
+						var recette = jsonRecettesDesserts[nom];
+						if(recette.type.toLowerCase().includes(text) || text == "toutes"){
+							recettes[nom] = jsonRecettesDesserts[nom];
+						}
+					}
+					break;
+			}
+
+			$('.tbody').empty()
+			addRecette(recettes);
+		}
+
+		function searchBar(){
+			var text = (document.getElementById('searchbarRecette').value).toLowerCase();
+			var recettes = {};
+			switch(type){
+				case "appéritifs":
+					for(var nom in jsonRecettesApperitifs){
+						if(nom.toLowerCase().includes(text)){
+							recettes[nom] = jsonRecettesApperitifs[nom];
+						}
+					}
+					break;
+				case "entrées":
+					for(var nom in jsonRecettesEntrees){
+						if(nom.toLowerCase().includes(text)){
+							recettes[nom] = jsonRecettesEntrees[nom];
+						}
+					}
+					break;
+				case "plats":
+					for(var nom in jsonRecettesPlats){
+						if(nom.toLowerCase().includes(text)){
+							recettes[nom] = jsonRecettesPlats[nom];
+						}
+					}
+					break;
+				case "desserts":
+					for(var nom in jsonRecettesDesserts){
+						if(nom.toLowerCase().includes(text)){
+							recettes[nom] = jsonRecettesDesserts[nom];
+						}
+					}
+					break;
+			}
+
+			$('.tbody').empty()
+			addRecette(recettes);
+		}
+
+		function addRecette(json){
+			var recettes = json
+			var i = 0;
+			for(var nom in recettes){
+				var j = i%2;
+				var recette = recettes[nom]
+				var tr = 	"<tr class='ligne"+j+"' onclick=\"document.location.href='lesPetitsChefs_recette.html?nom="+recette.nom+"&type="+type+"'\">"
+								+"<td class='colonne'> "+recette.nom +"</td>"
+								+"<td class='colonne'> "+ recette.type +" </td>"
+					       		+"<td class='colonne'> "+ recette.difficulte +" </td>"
+					       		+"<td class='colonne'> "+ recette.prepa +" </td>"
+					       		+"<td class='colonne'> "+ recette.cuisson +" </td>"
+					       		+"<td class='colonne'> "+ recette.nbPersonne +" </td>"
+					       		+"<td class='colonne'> "+ recette.prix +"</td>"
+					       	+"</tr>"
+				$(tr).appendTo($('.tbody'));
+				i++;
+			};
+		};
+
+
+		completeCombo(typeSecondaire);
+
+		switch(type){
+			case "appéritifs":
+				var img = '<img src="apperitifs.png"></img>';
+				($(img)).appendTo($(".titre"))
+				addRecette(jsonRecettesApperitifs);
+				break;
+			case "entrées":
+				var img = '<img src="entree.png"></img>';
+				($(img)).appendTo($(".titre"))
+				addRecette(jsonRecettesEntrees)
+				break;
+			case "plats":
+				var img = '<img src="plat.png"></img>';
+				($(img)).appendTo($(".titre"))
+				addRecette(jsonRecettesPlats)
+				break;
+			case "desserts":
+				var img = '<img src="dessert.png"></img>';
+				($(img)).appendTo($(".titre"))
+				addRecette(jsonRecettesDesserts)
+				break;
+		}
+
+
+
+	</script>
+</body>
+</html>

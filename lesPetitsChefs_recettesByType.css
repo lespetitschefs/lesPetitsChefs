@@ -1,0 +1,35 @@
+.colonne{
+	padding-left: 20px;
+	padding-right: 20px;
+	
+
+}
+
+table{
+	
+	border-collapse: collapse;
+	width: 100%
+}
+
+.listeRecette{
+	text-align: center;
+}
+
+.ligne0, .ligne1, .colonne{
+	border: 1px solid black;
+	cursor: pointer;
+}
+
+.ligne0:hover, .ligne1:hover{
+	background: pink;
+}
+
+.ligne0{
+	background: lightgrey;
+
+}
+
+#searchbarRecette{
+	margin-bottom: 20px;
+
+}
