@@ -1,7 +1,7 @@
 function displayMenu(){
 			
 	var node = $(".navbar")
-	node.toggle( "slide");
+	node.animate({width:'toggle'},350);
 }
 
 var typeSecondaire = {
