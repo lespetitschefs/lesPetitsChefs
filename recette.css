@@ -25,6 +25,8 @@
 	text-align: center;
 	margin-bottom: 0;
 	padding: 1%;
+	margin-top: 25px;
+
 }
 
 .ulIngredient{
@@ -49,6 +51,11 @@
 #containberPreparation{
 	width: 60%;
 	display: inline-block;
-	margin-left: 5%
+	margin-left: 5%;
+		vertical-align: top;
+
 }
 
+h2{
+	margin-top: 22px;
+}
