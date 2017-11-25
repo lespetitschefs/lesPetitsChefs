@@ -25,10 +25,9 @@
 	<div class="containerPrincipal">
 		<div class=enTete></div>
 		<div class="corp">
-			<h2>Ingrédients :</h2>
-			<div class="ingredients"></div>
-			<h2>Préparation :</h2>
-			<div class="preparation"></div>
+			<div id="containerIngredients"></div>
+			<div id="containberPreparation"></div>
+			
 		</div>
 
 
@@ -43,20 +42,24 @@
 
 	
 	function printIngredients(ingredients, typeIngredients){
-		var ul = "";
-		if(typeIngredients != "")
-			ul = "<p>"+typeIngredients+" : </p> <ul>"
+		var pIngredient = '<p class="ingredientsTitre">Ingrédients : '+typeIngredients+'</p>'
+		var divIngredient = '<div class="divIngredient" id="ingredients_'+typeIngredients+'"></div>'
+		var ul = '<ul class="ulIngredient">';
+		
 
 		for(var i=0; i<ingredients.length;i++){
-			var li = 	"<li>"+ingredients[i]+"</li>"
+			var li = 	'<li class="liIngredient">'+ingredients[i]+"</li>"
 			ul += li
 
 		}
 		ul += "</ul>";
-		$(ul).appendTo($('.ingredients'));
+		$(pIngredient).appendTo($("#containerIngredients"));
+		$(divIngredient).appendTo($("#containerIngredients"));
+		$(ul).appendTo($('#ingredients_'+typeIngredients));
 	}
 
 	function printPreparation(preparation, typePreparation){
+		
 		var ul = "";
 		if(typePreparation != "")
 			ul = '<p>'+typePreparation+' : </p> <ul>'
@@ -70,7 +73,8 @@
 
 		}
 		ul += "</ul>";
-		$(ul).appendTo($('.preparation'));
+		
+		$(ul).appendTo($('#preparation'));
 	}
 
 	function printEnTete(recette){
@@ -79,6 +83,11 @@
 	}
 
 	function printRecette(recette){
+		var pPreparation = '<h2>Préparations :</h2>'
+		var divPreparation = '<div id="preparation"></div>'
+		$(pPreparation).appendTo($("#containberPreparation"));
+		$(divPreparation).appendTo($("#containberPreparation"));
+
 		if(recette == null){
 			var pErreur = "<p>Erreur la recette n'existe pas</p>";
 			$(pErreur).appendTo($('.containerPrincipal'));

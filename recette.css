@@ -19,3 +19,36 @@
 .enTete img{
 	height: 15vh;
 }
+
+.ingredientsTitre{
+	background: silver;
+	text-align: center;
+	margin-bottom: 0;
+	padding: 1%;
+}
+
+.ulIngredient{
+	list-style: none;
+	margin:0;
+	padding: 0;
+}
+
+.liIngredient{
+	padding: 10px;
+	border-bottom: solid 2px silver; 
+}
+
+
+
+#containerIngredients{
+	width: 30%;
+	display: inline-block;
+	vertical-align: top;
+}
+
+#containberPreparation{
+	width: 60%;
+	display: inline-block;
+	margin-left: 5%
+}
+

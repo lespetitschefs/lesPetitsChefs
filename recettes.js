@@ -1,4 +1,4 @@
-/*var jsonRecettesApperitifs = {};
+var jsonRecettesApperitifs = {};
 jsonRecettesApperitifs["other test"] = ({"nom":"other test","type":"","image":"","difficulte":5,"prepa":"30 min","cuisson":"15 min","nbPersonne":2,"prix":"10 euro"});
 jsonRecettesApperitifs["test"] = ({"nom":"test","type":"","image":"","difficulte":5,"prepa":"30 min","cuisson":"15 min","nbPersonne":2,"prix":"10 euro"});
 
@@ -20,7 +20,7 @@ jsonRecettesPlats["Moussaka grecque"] = ({"nom":"Moussaka grecque","type":"Grati
 											"Moussaka":["Laver les légumes","Couper l'aubergine en fines tranches dans la longeur","parsemer de sel et laisser dégorger 30 minutes","Dans une poele à revetement antiadhésif, faire griller chaque tranche à sec.Réserver","Dans la meme poele, faire revenir à sec l'oigon, ajouter la viande de boeuf hachée, le cumin, la cannelle.","Ajouter les dés de tomates, ainsi que les cube de bouillon de volaille dégraissé.","AJouter un peu d'eau si les tomates n'en rendent pas suffisamment.","Préparer la béchamel diététique : délayer la fécule de mais avec un peu de lait froid.","Porter de reste de lait à ébullition, puis verser sur le premier mélange.","Remettre le tout dans la casserole et porter sur le feu jusqu'a épaississement, sans cesser de remuer","Assaisonner de sel, poivre, et muscade rapée.","Préchauffer le four à 180°C (th. 6).","Dans un plat à gratin, alterner les tranches d'aubergines et la viande en sauce.","Terminer par la couche de béchamel diététique.","Enfourner 45 minutes, servir chaud."]}});
 
 
-*/
+
 
 
 // Initialize Firebase
@@ -35,10 +35,14 @@ var config = {
 if (!firebase.apps.length) {
 	firebase.initializeApp(config);
 }
+
+
 var database = firebase.database();
 var jsonRecettesDesserts = {};
 var jsonRecettesApperitifs = {};
 var jsonRecettesPlats = {};
+
+
 
 
 
