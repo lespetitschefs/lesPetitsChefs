@@ -7,23 +7,17 @@
 	<link rel="stylesheet" type="text/css" href="main.css">
 	<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 	<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-	<script src="recettes.js"></script>
-  <script src="utils.js"></script>
+	<script src="utils.js"></script>
 </head>
 <body>
 	<h1 class="titre">Les petits chefs </h1>
-	<img class="imgMenu" onclick="displayMenu()" src="burgerldpi.png"/>
-	<div class="navbar">
-		<img class="closeSidebar" onclick="displayMenu()" src="close_sidebar.png"/>
-		<img class="logo	" src="logo.png"/>
-		<ul class="listeOnglet">
-			<li><a href="recettesByType.html?type=appéritifs"><img src="apperitifs.png"></img></a></li>
-			<li><a href="recettesByType.html?type=entrées">entrée</a></li>
-			<li><a href="recettesByType.html?type=plats">plat</a></li>
-			<li><a href="recettesByType.html?type=desserts"><img src="dessert.png"></a></li>
-		</ul>
-	</div>
-
+	<h1 class="titre"></h1>		
+	<div id="menu"></div>
+	<script type="text/javascript">
+		$(function(){
+	      $("#menu").load("menu.html"); 
+	    });
+	</script>
 
 </body>
 </html>

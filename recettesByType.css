@@ -33,3 +33,9 @@ table{
 	margin-bottom: 20px;
 
 }
+
+.circularProgressBar{
+	width: 30px;
+	vertical-align: middle;
+	margin-left: 20px;
+}

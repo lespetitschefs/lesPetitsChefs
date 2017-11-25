@@ -5,26 +5,23 @@
 	<title>Les petits chefs</title>
 	<link rel="stylesheet" type="text/css" href="main.css">
 	<link rel="stylesheet" type="text/css" href="recette.css">
-	<script src="recettes.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/4.6.2/firebase.js"></script>
+	<!--<script src="recettes.js"></script>-->
 	<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
   	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
   	<script src="utils.js"></script>
 </head>
 <body>
 
-	<h1 class="titre"></h1>
+	<notifyElement id="notify"/>
+	<h1 class="titre"></h1>		
+	<div id="menu"></div>
+	<script type="text/javascript">
+		$(function(){
+	      $("#menu").load("menu.html"); 
+	    });
+	</script>
 
-	<img class="imgMenu" onclick="displayMenu()" src="burgerldpi.png"/>
-	<div class="navbar">
-		<img class="closeSidebar" onclick="displayMenu()" src="close_sidebar.png"/>
-		<img class="logo	" src="logo.png"/>
-		<ul class="listeOnglet">
-			<li><a href="recettesByType.html?type=appéritifs"><img src="apperitifs.png"></img></a></li>
-			<li><a href="recettesByType.html?type=entrées">entrée</a></li>
-			<li><a href="recettesByType.html?type=plats">plat</a></li>
-			<li><a href="recettesByType.html?type=desserts"><img src="dessert.png"></a></li>
-		</ul>
-	</div>
 	<div class="containerPrincipal">
 		<div class=enTete></div>
 		<div class="corp">
@@ -44,13 +41,13 @@
 	var nom = url.searchParams.get("nom");
 	var type = url.searchParams.get("type");
 
+	
 	function printIngredients(ingredients, typeIngredients){
 		var ul = "";
 		if(typeIngredients != "")
 			ul = "<p>"+typeIngredients+" : </p> <ul>"
 
 		for(var i=0; i<ingredients.length;i++){
-			console.log(ingredients[i])
 			var li = 	"<li>"+ingredients[i]+"</li>"
 			ul += li
 
@@ -103,21 +100,43 @@
 	var pNom = "<p>"+nom+"</p>";
 	$(pNom).appendTo($('.titre'));
 
-	switch(type){
-		case "apperitifs":
-			var recette = jsonRecettesApperitifs[nom]
-			printRecette(recette)
-			break;
-		case "plats":
-			var recette = jsonRecettesPlats[nom]
-			printRecette(recette)
-			break;
-		case "desserts":
-			var recette = jsonRecettesDesserts[nom]
-			printRecette(recette)
-			break;
+
+	function notifyRecette(){
+		switch(type){
+			case "apperitifs":
+				var storedApperitifs = sessionStorage['jsonRecettesApperitifs'];
+				var jsonRecettesApperitifs = JSON.parse(storedApperitifs);
+				var recette = jsonRecettesApperitifs[nom]
+				printRecette(recette)
+				break;
+			case "plats":
+				var storedPlats = sessionStorage['jsonRecettesPlats'];
+				var jsonRecettesPlats = JSON.parse(storedPlats);
+				var recette = jsonRecettesPlats[nom]
+				printRecette(recette)
+				break;
+			case "desserts":
+				var storedDesserts = sessionStorage['jsonRecettesDesserts'];
+				var jsonRecettesDesserts = JSON.parse(storedDesserts);
+				var recette = jsonRecettesDesserts[nom]
+				printRecette(recette)
+				break;
+			case "entrées":
+				var storedEntrees = sessionStorage['jsonRecettesEntrees'];
+				var jsonRecettesEntrees = JSON.parse(storedEntrees);
+				var recette = jsonRecettesEntrees[nom]
+				printRecette(recette)
+				break;
+		}
 	}
 
+	notifyRecette();
+
+
+	/*document.getElementById("notify").addEventListener('notifyDessertChanged', function (e) {if(type == "desserts")notifyRecette()}, false);
+	document.getElementById("notify").addEventListener('notifyApperitifsChanged', function (e) {if(type == "apperitifs")notifyRecette()}, false);
+	document.getElementById("notify").addEventListener('notifyPlatsChanged', function (e) {if(type == "plats")notifyRecette()}, false);
+	document.getElementById("notify").addEventListener('notifyDessertChanged', function (e) {if(type == "entrées")notifyRecette()}, false);*/
 
 
 
