@@ -206,6 +206,7 @@
 		function onNotify(typeOnNotify){
 			if(type == typeOnNotify){
 				notifyRecettesChanged();
+				afficherRecetteMobile();
 			}
 		}
 
@@ -217,23 +218,31 @@
 		switch(type){
 			case "apperitifs":
 				var storedApperitifs = sessionStorage['jsonRecettesApperitifs'];
-				var jsonRecettesApperitifs = JSON.parse(storedApperitifs);
-				notifyRecettesChanged();
+				if(storedApperitifs != null){
+					var jsonRecettesApperitifs = JSON.parse(storedApperitifs);
+					notifyRecettesChanged();
+				}
 				break;
 			case "plats":
 				var storedPlats = sessionStorage['jsonRecettesPlats'];
-				var jsonRecettesPlats = JSON.parse(storedPlats);
-				notifyRecettesChanged();
+				if(storedPlats != null){
+					var jsonRecettesPlats = JSON.parse(storedPlats);
+					notifyRecettesChanged();
+				}
 				break;
 			case "desserts":
 				var storedDesserts = sessionStorage['jsonRecettesDesserts'];
-				var jsonRecettesDesserts = JSON.parse(storedDesserts);
-				notifyRecettesChanged();				
+				if(storedDesserts != null){
+					var jsonRecettesDesserts = JSON.parse(storedDesserts);
+					notifyRecettesChanged();				
+				}
 				break;
 			case "entrées":
 				var storedEntrees = sessionStorage['jsonRecettesEntrees'];
-				var jsonRecettesEntrees = JSON.parse(storedEntrees);
-				notifyRecettesChanged();
+				if(storedDesserts != null){
+					var jsonRecettesEntrees = JSON.parse(storedEntrees);
+					notifyRecettesChanged();
+				}
 				break;
 		}
 
@@ -241,6 +250,7 @@
 
 
 		function afficherRecetteMobile(){
+			$(".circularProgressBar").hide()
 			switch(type){
 				case "appéritifs":
 					sessionStorage['jsonRecettesApperitifs'] = JSON.stringify(jsonRecettesApperitifs);

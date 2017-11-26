@@ -25,6 +25,7 @@ body{
 	display: none;
 	height: 99%;
 	top:0;
+	z-index: 100;
 }
 
 
