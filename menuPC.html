@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<script src="https://www.gstatic.com/firebasejs/4.6.2/firebase.js"></script>
+	
+	<script src="http://code.jquery.com/jquery-latest.js"></script>
+	<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+	<title>Les petits chefs</title>
+	<link rel="stylesheet" type="text/css" href="main.css">
+	<link rel="stylesheet" type="text/css" href="menuPC.css">
+	<link rel="stylesheet" type="text/css" href="recettesByType.css">	
+  	<script src="utils.js"></script>
+</head>
+<body>
+	<div class="navbar">
+		<p class="titreMenu">Les petits chefs</p>
+		<p class="optionMenu"><a href="recettesByType.html?type=desserts">Désserts</a></p>
+		<p class="optionMenu"><a href="recettesByType.html?type=plats">Plats</a></p>
+		<p class="optionMenu"><a href="recettesByType.html?type=entrées">Entrées</a></p>
+		<p class="optionMenu"><a href="recettesByType.html?type=appéritifs">Appéritifs</a></p>
+	</div>
+
+	<script type="text/javascript">
+
+		
+		//alert(window.innerWidth)
+		function displayMenu(){
+			var node = $(".navbar")
+			node.css({"right":"-250px","display":"inline-block"}).animate({"right":"0px"}, 300);
+			
+		}
+
+		function closeMenu(){
+			var node = $(".navbar")
+			node.css({"right":"0px","display":"inline-block"}).animate({"right":"-250px"}, 300);
+			
+		}
+	</script>
+</body>
+</html>

@@ -22,7 +22,11 @@
 	<div id="menu"></div>
 	<script type="text/javascript">
 		$(function(){
-	      $("#menu").load("menu.html"); 
+	      	if(navigator.userAgent.includes("Android") || navigator.userAgent.includes("Iphone")){
+				$("#menu").load("menuSmartphone.html"); 
+			}else{
+				$("#menu").load("menuPC.html"); 
+			}	
 	    });
 	</script>
 

@@ -10,6 +10,7 @@
 	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
 	<title>Les petits chefs</title>
 	<link rel="stylesheet" type="text/css" href="main.css">
+	<link rel="stylesheet" type="text/css" href="menuSmartphone.css">
 	<link rel="stylesheet" type="text/css" href="recettesByType.css">	
   	<script src="utils.js"></script>
 </head>
@@ -17,7 +18,6 @@
 	<img class="imgMenu" onclick="displayMenu()" src="burgerldpi.png"/>
 	<div class="navbar">
 		<img class="closeSidebar" onclick="closeMenu()" src="close_sidebar.png"/>
-		<img class="logo	" src="logo.png"/>
 		<ul class="listeOnglet">
 			<li><a href="recettesByType.html?type=appéritifs"><img src="appéritifs.png"></img></a></li>
 			<li><a href="recettesByType.html?type=entrées">entrée</a></li>
@@ -29,28 +29,18 @@
 	</div>
 	<script type="text/javascript">
 
-		/*if(navigator.userAgent.includes("Android")){
-
-		}*/
-
+		
 		//alert(window.innerWidth)
 		function displayMenu(){
 			var node = $(".navbar")
-			if(window.innerWidth > 980){
-				//node.effect('slide',{direction:'left'},300, null);
-				node.css({"left":"-250px","display":"block"}).animate({"left":"0px"}, 300);
-			}else{
-				node.css({"right":"-250px","display":"block"}).animate({"right":"0px"}, 300);
-			}
+			node.css({"right":"-250px","display":"inline-block"}).animate({"right":"0px"}, 300);
+			
 		}
 
 		function closeMenu(){
 			var node = $(".navbar")
-			if(window.innerWidth > 980){
-				node.css({"left":"0px","display":"block"}).animate({"left":"-250px"}, 300);
-			}else{
-				node.css({"right":"0px","display":"block"}).animate({"right":"-250px"}, 300);
-			}
+			node.css({"right":"0px","display":"inline-block"}).animate({"right":"-250px"}, 300);
+			
 		}
 	</script>
 </body>

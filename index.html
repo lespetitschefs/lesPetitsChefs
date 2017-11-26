@@ -15,7 +15,9 @@
 	<div id="menu"></div>
 	<script type="text/javascript">
 		$(function(){
-	      $("#menu").load("menu.html"); 
+			if(navigator.userAgent.includes("Android")){
+				$("#menu").load("menuSmartphone.html"); 
+			} 
 	    });
 	</script>
 
