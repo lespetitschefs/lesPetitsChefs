@@ -4,11 +4,14 @@ body{
 
 }
 
+.titre{
+	font-weight: normal;
+}
+
 
 
 .titre img{
 	width: 25%;
-
 }
 
 .containerPrincipal{

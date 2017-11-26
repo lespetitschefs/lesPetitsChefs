@@ -21,7 +21,7 @@
 }
 
 .ingredientsTitre{
-	background: silver;
+	background: #DBDBE8;
 	text-align: center;
 	margin: 0;
 	padding: 5px;
@@ -36,7 +36,7 @@
 
 .liIngredient{
 	padding: 10px;
-	border-bottom: solid 2px silver; 
+	border-bottom: solid 2px #DBDBE8; 
 }
 
 
@@ -57,7 +57,7 @@
 }
 
 .typePreparation{
-	background: silver;
+	background: #DBDBE8;
 	margin: 0;
 	padding: 5px;
 	margin-top: 25px;
@@ -66,7 +66,7 @@
 .ulPreparation{
 	list-style: none;
 	padding: 0;
-	border: solid 1px silver;
+	border: solid 1px #DBDBE8;
 	margin-top:0; 
 }
 
@@ -76,6 +76,13 @@
 
 h2{
 	margin-top: 22px;
+}
+
+
+.titre p{
+	margin:0;
+	padding-top:10px;
+	padding-bottom: 10px; 
 }
 
 @media all and (max-width: 980px){
