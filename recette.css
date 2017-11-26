@@ -85,10 +85,9 @@ h2{
 	}
 
 	.listeIngredient{
-		width: 40%;
-		display: inline-block;
+		width: 90%;
+		margin-left: 5%;
 		vertical-align: top;
-		margin:5%;
 	}
 
 	#containberPreparation{
@@ -97,7 +96,7 @@ h2{
 
 	.titre{
 		text-align: center;
-		
+
 	}
 
 
