@@ -27,7 +27,7 @@
 
 		function displayMenu(){
 			var node = $(".navbar")
-			if(screen.width > 400){
+			if(window.innerWidth > 400){
 				node.animate({width:'toggle'},350);
 			}else{
 				node.slideToggle("slow");
