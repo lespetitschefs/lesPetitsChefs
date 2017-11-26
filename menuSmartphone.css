@@ -15,7 +15,7 @@
 
 .navbar{
 	width:250px;
-	background: #EBA73C ;
+	background: #DBDBE8 ;
 	position: absolute;
 	top:5px;
 	display: none;
@@ -59,18 +59,19 @@
 }
 
 
-
 .listeOnglet li{
 	border-top: solid 3px white;
 	padding: 10px;
 }
 
 
-.containerPrincipal{
-	width: 70%;
-	margin-left: 15%;
-	margin-right: 15%;
+.titre{
+	
+	width: 100%;
+	text-align: center;
+
 }
+
 
 .navbar a{
 	color:white;
