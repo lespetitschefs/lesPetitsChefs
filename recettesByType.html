@@ -54,12 +54,6 @@
 		var url = new URL(url_String);
 		var type = url.searchParams.get("type");
 
-
-		/*var titreType = type.charAt(0).toUpperCase() + type.slice(1);
-		var pType = "<p>"+titreType+"</p>"
-		$(pType).appendTo($(".titre"))*/
-
-
 		function completeCombo(typeSecondaire){
 			for(var i in typeSecondaire[type]){
 				var option = " <option id="+typeSecondaire[type][i]+">"+typeSecondaire[type][i]+"</option>"

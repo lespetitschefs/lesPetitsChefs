@@ -87,9 +87,7 @@
 		$(divPreparation).appendTo($("#containberPreparation"));
 
 		if(recette == null){
-			var pErreur = "<p>Erreur la recette n'existe pas</p>";
-			$(pErreur).appendTo($('.containerPrincipal'));
-
+			document.location.href="recettesByType.html?type="+type
 		}else{
 			printEnTete(recette)
 			for(var typeIngredients in recette.ingredients){
@@ -112,27 +110,43 @@
 		switch(type){
 			case "apperitifs":
 				var storedApperitifs = sessionStorage['jsonRecettesApperitifs'];
-				var jsonRecettesApperitifs = JSON.parse(storedApperitifs);
-				var recette = jsonRecettesApperitifs[nom]
-				printRecette(recette)
+				if(storedApperitifs == null){
+					document.location.href="recettesByType.html?type=apperitifs"
+				}else{
+					var jsonRecettesApperitifs = JSON.parse(storedApperitifs);
+					var recette = jsonRecettesApperitifs[nom]
+					printRecette(recette)
+				}
 				break;
 			case "plats":
 				var storedPlats = sessionStorage['jsonRecettesPlats'];
-				var jsonRecettesPlats = JSON.parse(storedPlats);
-				var recette = jsonRecettesPlats[nom]
-				printRecette(recette)
+				if(storedPlats == null){
+					document.location.href="recettesByType.html?type=plats"
+				}else{
+					var jsonRecettesPlats = JSON.parse(storedPlats);
+					var recette = jsonRecettesPlats[nom]
+					printRecette(recette)
+				}
 				break;
 			case "desserts":
 				var storedDesserts = sessionStorage['jsonRecettesDesserts'];
-				var jsonRecettesDesserts = JSON.parse(storedDesserts);
-				var recette = jsonRecettesDesserts[nom]
-				printRecette(recette)
+				if(storedDesserts == null){
+					document.location.href="recettesByType.html?type=desserts"
+				}else{
+					var jsonRecettesDesserts = JSON.parse(storedDesserts);
+					var recette = jsonRecettesDesserts[nom]
+					printRecette(recette)
+				}
 				break;
 			case "entrées":
 				var storedEntrees = sessionStorage['jsonRecettesEntrees'];
-				var jsonRecettesEntrees = JSON.parse(storedEntrees);
-				var recette = jsonRecettesEntrees[nom]
-				printRecette(recette)
+				if(storedEntrees == null){
+					document.location.href="recettesByType.html?type=entrées"
+				}else{
+					var jsonRecettesEntrees = JSON.parse(storedEntrees);
+					var recette = jsonRecettesEntrees[nom]
+					printRecette(recette)
+				}
 				break;
 		}
 	}
