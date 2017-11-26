@@ -1,8 +1,4 @@
-function displayMenu(){
-			
-	var node = $(".navbar")
-	node.animate({width:'toggle'},350);
-}
+
 
 var typeSecondaire = {
 	'appéritifs':['vérine','soupe','toast'],

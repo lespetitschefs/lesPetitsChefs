@@ -48,6 +48,7 @@
 	</div>
 	<script type="text/javascript">
 		
+		var test = "test";
 
 		var url_String = window.location.href;
 		var url = new URL(url_String);
@@ -174,7 +175,7 @@
 		($(img)).appendTo($(".titre"))
 
 		function notifyRecettesChanged(){
-			console.log("change")
+			$(".circularProgressBar").hide()
 			switch(type){
 				case "appéritifs":
 					sessionStorage['jsonRecettesApperitifs'] = JSON.stringify(jsonRecettesApperitifs);
@@ -198,7 +199,6 @@
 		function onNotify(typeOnNotify){
 			if(type == typeOnNotify){
 				notifyRecettesChanged();
-				$(".circularProgressBar").hide()
 			}
 		}
 

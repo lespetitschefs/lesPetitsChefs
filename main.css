@@ -95,3 +95,28 @@ body{
 		margin-right: 5%;
 	}
 }
+
+@media screen and (max-width: 400px){
+
+	.imgMenu{
+		right: 0;
+	}
+
+	.logo{
+		display: none;
+	}
+
+	.navbar{
+		width: 100%;
+	}
+
+	.listeOnglet{
+		width: 100%;
+	}
+
+	.closeSidebar{
+		margin-left: 0px;
+		right: 0;
+	}
+
+}

@@ -1,4 +1,4 @@
-var jsonRecettesApperitifs = {};
+/*var jsonRecettesApperitifs = {};
 jsonRecettesApperitifs["other test"] = ({"nom":"other test","type":"","image":"","difficulte":5,"prepa":"30 min","cuisson":"15 min","nbPersonne":2,"prix":"10 euro"});
 jsonRecettesApperitifs["test"] = ({"nom":"test","type":"","image":"","difficulte":5,"prepa":"30 min","cuisson":"15 min","nbPersonne":2,"prix":"10 euro"});
 
@@ -21,7 +21,7 @@ jsonRecettesPlats["Moussaka grecque"] = ({"nom":"Moussaka grecque","type":"Grati
 
 
 
-
+*/
 
 // Initialize Firebase
 var config = {
@@ -42,25 +42,47 @@ var jsonRecettesDesserts = {};
 var jsonRecettesApperitifs = {};
 var jsonRecettesPlats = {};
 
+var storedDesserts = sessionStorage['jsonRecettesDesserts'];
+if(storedDesserts == null){
+	firebase.database().ref('/desserts/').once('value').then(function(snapshot) {
+		jsonRecettesDesserts = (snapshot.val() && snapshot.val().recettes) || 'Anonymous';
+		var event = new Event('notifyDessertChanged');
+		document.getElementById("notify").dispatchEvent(event);
+	});
+}else{
+	jsonRecettesApperitifs = JSON.parse(storedDesserts);
+}
+
+var storedPlats = sessionStorage['jsonRecettesPlats'];
+if(storedPlats == null){
+	firebase.database().ref('/plats/').once('value').then(function(snapshot) {
+		jsonRecettesPlats = (snapshot.val() && snapshot.val().recettes) || 'Anonymous';
+		var event = new Event('notifyPlatsChanged');
+		document.getElementById("notify").dispatchEvent(event);
+	});
+}else{
+	jsonRecettesPlats = JSON.parse(storedPlats);
+
+}
+
+var storedApperitifs = sessionStorage['jsonRecettesApperitifs'];
+if(storedApperitifs == null){
+	firebase.database().ref('/apperitifs/').once('value').then(function(snapshot) {
+		jsonRecettesApperitifs = (snapshot.val() && snapshot.val().recettes) || 'Anonymous';
+		var event = new Event('notifyApperitifsChanged');
+		document.getElementById("notify").dispatchEvent(event);
+	});
+}else{
+	jsonRecettesApperitifs = JSON.parse(storedApperitifs);
+
+}
 
 
 
 
-firebase.database().ref('/desserts/').once('value').then(function(snapshot) {
-	jsonRecettesDesserts = (snapshot.val() && snapshot.val().recettes) || 'Anonymous';
-	var event = new Event('notifyDessertChanged');
-	document.getElementById("notify").dispatchEvent(event);
-});
-firebase.database().ref('/apperitifs/').once('value').then(function(snapshot) {
-	jsonRecettesApperitifs = (snapshot.val() && snapshot.val().recettes) || 'Anonymous';
-	var event = new Event('notifyApperitifsChanged');
-	document.getElementById("notify").dispatchEvent(event);
-});
-firebase.database().ref('/plats/').once('value').then(function(snapshot) {
-	jsonRecettesPlats = (snapshot.val() && snapshot.val().recettes) || 'Anonymous';
-	var event = new Event('notifyPlatsChanged');
-	document.getElementById("notify").dispatchEvent(event);
-});
+
+
+
 /*function writeApperitifs(appertif) {
   firebase.database().ref('desserts/').set({
     recettes: appertif

@@ -22,6 +22,18 @@
 			<li><a href="recettesByType.html?type=desserts"><img src="desserts.png"></a></li>
 		</ul>
 	</div>
+	<script type="text/javascript">
+		console.log(screen.height)
 
+		function displayMenu(){
+			var node = $(".navbar")
+			if(screen.width > 400){
+				node.animate({width:'toggle'},350);
+			}else{
+				node.slideToggle("slow");
+			}
+			
+		}
+	</script>
 </body>
 </html>
