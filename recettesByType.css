@@ -57,9 +57,17 @@ table{
 	vertical-align: top;
 }
 
+.titre{
+	padding-left: 15%;
+}
+
 @media all and (max-width: 980px){
 
 	.titre img{
 		width: 35%;
 	}
+
+	.titre{
+		padding-left: 5%;
+	}	
 }

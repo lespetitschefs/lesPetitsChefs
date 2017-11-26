@@ -21,8 +21,11 @@
 	margin-top:23px; 
 }
 
+.optionMenu a:hover{
+	color: #00A0E9;
+}
+
 .titre{
-	padding-left: 15%;
 	margin-top: 65px;
 	padding-top: 5px;
 	width: 100%;
@@ -34,4 +37,13 @@
 a{
 	text-decoration: none;
 	color: black;
+}
+
+@media all and (max-width: 980px){
+	.navbar{
+		width: 90%;
+		padding-left: 5%;
+		padding-right: 5%;
+	}
+
 }
