@@ -23,9 +23,8 @@
 		</ul>
 	</div>
 	<script type="text/javascript">
-		console.log(screen.height)
-
 		function displayMenu(){
+			alert(window.innerWidth)
 			var node = $(".navbar")
 			if(window.innerWidth > 400){
 				node.animate({width:'toggle'},350);
