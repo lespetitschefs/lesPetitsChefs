@@ -94,9 +94,6 @@ body{
 		margin-left: 5%;
 		margin-right: 5%;
 	}
-}
-
-@media screen and (max-width: 400px){
 
 	.imgMenu{
 		right: 0;
@@ -118,5 +115,4 @@ body{
 		margin-left: 0px;
 		right: 0;
 	}
-
 }

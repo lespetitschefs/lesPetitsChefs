@@ -24,9 +24,8 @@
 	</div>
 	<script type="text/javascript">
 		function displayMenu(){
-			alert(window.innerWidth)
 			var node = $(".navbar")
-			if(window.innerWidth > 400){
+			if(window.innerWidth > 1200){
 				node.animate({width:'toggle'},350);
 			}else{
 				node.slideToggle("slow");
