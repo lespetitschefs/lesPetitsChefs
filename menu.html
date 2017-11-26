@@ -38,7 +38,11 @@
 			if(window.innerWidth > 980){
 				node.show('slide',{direction:'left'},300, null);
 			}else{
-				node.show('slide',{direction:'right'},300, null);
+				if(!navigator.userAgent.includes("Android"))
+					node.show('slide',{direction:'right'},300, null);
+				else
+					node.slideToggle("slow");
+
 			}
 		}
 
@@ -47,7 +51,10 @@
 			if(window.innerWidth > 980){
 				node.hide('slide',{direction:'left'},300, null);
 			}else{
-				node.hide('slide',{direction:'right'},300, null);
+				if(!navigator.userAgent.includes("Android"))
+					node.hide('slide',{direction:'right'},300, null);
+				else
+					node.slideToggle("slow");
 			}
 		}
 	</script>
