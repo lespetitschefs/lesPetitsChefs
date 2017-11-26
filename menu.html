@@ -2,8 +2,11 @@
 <html>
 <head>
 	<script src="https://www.gstatic.com/firebasejs/4.6.2/firebase.js"></script>
-	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+	
+	<script src="http://code.jquery.com/jquery-latest.js"></script>
 	<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
 	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
 	<title>Les petits chefs</title>
 	<link rel="stylesheet" type="text/css" href="main.css">
@@ -34,18 +37,19 @@
 		function displayMenu(){
 			var node = $(".navbar")
 			if(window.innerWidth > 980){
-				node.show('slide',{direction:'left'},300, null);
+				//node.effect('slide',{direction:'left'},300, null);
+				node.css({"left":"-250px","display":"block"}).animate({"left":"0px"}, 300);
 			}else{
-				node.show('slide',{direction:'right'},300, null);
+				node.css({"right":"-250px","display":"block"}).animate({"right":"0px"}, 300);
 			}
 		}
 
 		function closeMenu(){
 			var node = $(".navbar")
 			if(window.innerWidth > 980){
-				node.hide('slide',{direction:'left'},300, null);
+				node.css({"left":"0px","display":"block"}).animate({"left":"-250px"}, 300);
 			}else{
-				node.hide('slide',{direction:'right'},300, null);
+				node.css({"right":"0px","display":"block"}).animate({"right":"-250px"}, 300);
 			}
 		}
 	</script>
