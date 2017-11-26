@@ -1,8 +1,8 @@
 .corp{
 	border: solid 1px black;
 	margin-top:50px;
-	overflow-y: auto;
-	height: 60vh;
+	/*overflow-y: auto;*/
+	/*height: 60vh;*/
 	padding-left:30px;
 	padding-right:30px;
 }
