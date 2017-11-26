@@ -62,13 +62,13 @@
 		
 		var ul = "";
 		if(typePreparation != "")
-			ul = '<p>'+typePreparation+' : </p> <ul>'
+			ul = '<p class="typePreparation">'+typePreparation+' : </p> <ul class="ulPreparation">'
 
 		var numero
 		for(var i=0; i<preparation.length;i++){
 			numero = i+1;
 			console.log(preparation[i])
-			var li = 	"<li>"+numero+" : "+preparation[i]+"</li>"
+			var li = 	'<li class="liPreparation">'+numero+" : "+preparation[i]+"</li>"
 			ul += li
 
 		}
@@ -83,9 +83,7 @@
 	}
 
 	function printRecette(recette){
-		var pPreparation = '<h2>Préparations :</h2>'
 		var divPreparation = '<div id="preparation"></div>'
-		$(pPreparation).appendTo($("#containberPreparation"));
 		$(divPreparation).appendTo($("#containberPreparation"));
 
 		if(recette == null){
