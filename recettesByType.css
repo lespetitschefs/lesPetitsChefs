@@ -39,3 +39,15 @@ table{
 	vertical-align: middle;
 	margin-left: 20px;
 }
+
+@media all and (max-width: 1200px){
+
+	.titre{
+		text-align: left;
+		margin-left: 5%;
+	}
+
+	.titre img{
+		width: 35%;
+	}
+}

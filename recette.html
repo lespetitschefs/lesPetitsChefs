@@ -42,19 +42,21 @@
 
 	
 	function printIngredients(ingredients, typeIngredients){
-		var pIngredient = '<p class="ingredientsTitre">Ingrédients : '+typeIngredients+'</p>'
-		var divIngredient = '<div class="divIngredient" id="ingredients_'+typeIngredients+'"></div>'
+		var divListeIngredient = '<div class="listeIngredient" id="listeIngredient'+typeIngredients+'"></div>';
+		var pIngredient = '<p class="ingredientsTitre">Ingrédients : '+typeIngredients+'</p>';
+		var divIngredient = '<div class="divIngredient" id="ingredients_'+typeIngredients+'"></div>';
 		var ul = '<ul class="ulIngredient">';
 		
-
 		for(var i=0; i<ingredients.length;i++){
 			var li = 	'<li class="liIngredient">'+ingredients[i]+"</li>"
 			ul += li
 
 		}
 		ul += "</ul>";
-		$(pIngredient).appendTo($("#containerIngredients"));
-		$(divIngredient).appendTo($("#containerIngredients"));
+
+		$(divListeIngredient).appendTo($("#containerIngredients"));
+		$(pIngredient).appendTo($("#listeIngredient"+typeIngredients));
+		$(divIngredient).appendTo($("#listeIngredient"+typeIngredients));
 		$(ul).appendTo($('#ingredients_'+typeIngredients));
 	}
 

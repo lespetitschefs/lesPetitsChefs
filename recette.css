@@ -77,3 +77,30 @@
 h2{
 	margin-top: 22px;
 }
+
+@media all and (max-width: 1200px){
+
+	#containerIngredients{
+		width: 100%;
+	}
+
+	.listeIngredient{
+		width: 40%;
+		display: inline-block;
+		vertical-align: top;
+		margin:5%;
+	}
+
+	#containberPreparation{
+		width: 90%;
+	}
+
+	.titre{
+		text-align: center;
+		
+	}
+
+
+
+
+}

@@ -115,4 +115,9 @@ body{
 		margin-left: 0px;
 		right: 0;
 	}
+
+	.listeOnglet img{
+		width: 50%;
+		margin-left: 25%;
+	}
 }
