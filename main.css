@@ -107,8 +107,7 @@ body{
 	}
 
 	.navbar{
-		width: 100%;
-		height: auto;
+		right: 0
 	}
 
 	.listeOnglet{
@@ -118,11 +117,6 @@ body{
 	.closeSidebar{
 		margin-left: 0px;
 		right: 0;
-	}
-
-	.listeOnglet img{
-		width: 50%;
-		margin-left: 25%;
 	}
 
 	.titre{

@@ -1,19 +1,19 @@
 <!DOCTYPE html>
 <html>
 <head>
+	<script src="https://www.gstatic.com/firebasejs/4.6.2/firebase.js"></script>
+	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+	<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
 	<title>Les petits chefs</title>
 	<link rel="stylesheet" type="text/css" href="main.css">
-	<link rel="stylesheet" type="text/css" href="recettesByType.css">
-	<script src="https://www.gstatic.com/firebasejs/4.6.2/firebase.js"></script>
-	<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-  	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+	<link rel="stylesheet" type="text/css" href="recettesByType.css">	
   	<script src="utils.js"></script>
 </head>
 <body>
 	<img class="imgMenu" onclick="displayMenu()" src="burgerldpi.png"/>
 	<div class="navbar">
-		<img class="closeSidebar" onclick="displayMenu()" src="close_sidebar.png"/>
+		<img class="closeSidebar" onclick="closeMenu()" src="close_sidebar.png"/>
 		<img class="logo	" src="logo.png"/>
 		<ul class="listeOnglet">
 			<li><a href="recettesByType.html?type=appéritifs"><img src="appéritifs.png"></img></a></li>
@@ -30,11 +30,19 @@
 		function displayMenu(){
 			var node = $(".navbar")
 			if(window.innerWidth > 980){
-				node.animate({width:'toggle'},350);
+				node.show('slide',{direction:'left'},300, null);
 			}else{
-				node.slideToggle("slow");
+				node.show('slide',{direction:'right'},300, null);
 			}
-			
+		}
+
+		function closeMenu(){
+			var node = $(".navbar")
+			if(window.innerWidth > 980){
+				node.hide('slide',{direction:'left'},300, null);
+			}else{
+				node.hide('slide',{direction:'right'},300, null);
+			}
 		}
 	</script>
 </body>

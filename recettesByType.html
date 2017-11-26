@@ -1,15 +1,16 @@
 <!DOCTYPE html>
 <html>
 <head>
+	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+	<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 	<script src="https://www.gstatic.com/firebasejs/4.6.2/firebase.js"></script>
 	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
 	<title>Les petits chefs</title>
 	<link rel="stylesheet" type="text/css" href="main.css">
 	<link rel="stylesheet" type="text/css" href="recettesByType.css">
 	<script src="recettes.js"></script>
-	<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-  	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
   	<script src="utils.js"></script>
+
 </head>
 <body>
 
@@ -221,6 +222,7 @@
 				if(storedApperitifs != null){
 					var jsonRecettesApperitifs = JSON.parse(storedApperitifs);
 					notifyRecettesChanged();
+					afficherRecetteMobile();
 				}
 				break;
 			case "plats":
@@ -228,13 +230,15 @@
 				if(storedPlats != null){
 					var jsonRecettesPlats = JSON.parse(storedPlats);
 					notifyRecettesChanged();
+					afficherRecetteMobile();
 				}
 				break;
 			case "desserts":
 				var storedDesserts = sessionStorage['jsonRecettesDesserts'];
 				if(storedDesserts != null){
 					var jsonRecettesDesserts = JSON.parse(storedDesserts);
-					notifyRecettesChanged();				
+					notifyRecettesChanged();
+					afficherRecetteMobile();				
 				}
 				break;
 			case "entrées":
@@ -242,6 +246,7 @@
 				if(storedDesserts != null){
 					var jsonRecettesEntrees = JSON.parse(storedEntrees);
 					notifyRecettesChanged();
+					afficherRecetteMobile();
 				}
 				break;
 		}
@@ -271,7 +276,6 @@
 			}
 		}
 
-		afficherRecetteMobile();
 		$(".listeRecetteMobile").hide();
 
 		function addRecetteMobile(json){
