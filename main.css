@@ -99,7 +99,7 @@ body{
 	.imgMenu{
 		right: 5%;
 		top : 20px;
-		width: 10%;
+		width: 15%;
 	}
 
 	.logo{
@@ -123,5 +123,9 @@ body{
 	.listeOnglet img{
 		width: 50%;
 		margin-left: 25%;
+	}
+
+	.titre{
+		font-size: 50px
 	}
 }
