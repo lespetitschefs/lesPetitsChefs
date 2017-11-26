@@ -68,6 +68,7 @@ table{
 	}
 
 	.titre{
-		padding-left: 5%;
+		padding-left: 0;
+		text-align: center;
 	}	
 }
