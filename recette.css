@@ -78,7 +78,7 @@ h2{
 	margin-top: 22px;
 }
 
-@media all and (max-width: 1200px){
+@media all and (max-width: 980px){
 
 	#containerIngredients{
 		width: 100%;

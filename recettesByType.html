@@ -29,6 +29,7 @@
 		    <option id="option">Toutes</option>
 		</select>
 		<img src="circularProgressBar.gif" class="circularProgressBar"></img>
+		<div class="listeRecetteMobile"></div>
 		<table class="listeRecette">
 			<thead>
 			   <tr class="ligne">
@@ -48,14 +49,12 @@
 	</div>
 	<script type="text/javascript">
 		
-		var test = "test";
-
 		var url_String = window.location.href;
 		var url = new URL(url_String);
 		var type = url.searchParams.get("type");
 
-		
-			function completeCombo(typeSecondaire){
+
+		function completeCombo(typeSecondaire){
 			for(var i in typeSecondaire[type]){
 				var option = " <option id="+typeSecondaire[type][i]+">"+typeSecondaire[type][i]+"</option>"
 				$(option).appendTo($("#combo"));
@@ -100,8 +99,14 @@
 					break;
 			}
 
-			$('.tbody').empty()
-			addRecettes(recettes);
+			if(window.innerWidth <= 980){
+				$(".listeRecetteMobile").empty();
+				addRecetteMobile(recettes);
+
+			}else if(window.innerWidth > 980){
+				$('.tbody').empty()
+				addRecettes(recettes);
+			}
 		}
 
 		function searchBar(){
@@ -138,8 +143,15 @@
 					break;
 			}
 
-			$('.tbody').empty()
-			addRecettes(recettes);
+			if(window.innerWidth <= 980){
+				$(".listeRecetteMobile").empty();
+				addRecetteMobile(recettes);
+
+			}else if(window.innerWidth > 980){
+				$('.tbody').empty()
+				addRecettes(recettes);
+			}
+			
 		}
 
 		function addRecettes(json){
@@ -225,7 +237,68 @@
 				break;
 		}
 
-		
+
+
+
+		function afficherRecetteMobile(){
+			switch(type){
+				case "appéritifs":
+					sessionStorage['jsonRecettesApperitifs'] = JSON.stringify(jsonRecettesApperitifs);
+					addRecetteMobile(jsonRecettesApperitifs);
+					break;
+				case "entrées":
+					sessionStorage['jsonRecettesEntrees'] = JSON.stringify(jsonRecettesEntrees);
+					addRecetteMobile(jsonRecettesEntrees)
+					break;
+				case "plats":
+					sessionStorage['jsonRecettesPlats'] = JSON.stringify(jsonRecettesPlats);
+					addRecetteMobile(jsonRecettesPlats)
+					break;
+				case "desserts":
+					sessionStorage['jsonRecettesDesserts'] = JSON.stringify(jsonRecettesDesserts);
+					addRecetteMobile(jsonRecettesDesserts)
+					break;
+			}
+		}
+
+		afficherRecetteMobile();
+		$(".listeRecetteMobile").hide();
+
+		function addRecetteMobile(json){
+			var recettes = json
+			var i = 0;
+			for(var nom in recettes){
+				var j = i%2;
+				var recette = recettes[nom]
+				var recetteIHM = '<div onclick="document.location.href=\'recette.html?nom='+recette.nom+'&type='+type+'\'" class="recetteMobile"><img src="'+recette.image+'"></img><p class="nomRecetteMobile">'+recette.nom+'</p></div>'
+				$(recetteIHM).appendTo($('.listeRecetteMobile'));
+				i++;
+			};
+		}
+
+		var isAfficheMobile = false 
+		window.onresize = function() {
+			if(window.innerWidth <= 980 && !isAfficheMobile){
+				isAfficheMobile = true;
+				$(".listeRecetteMobile").show();
+				$(".listeRecette").hide();
+			}else if(window.innerWidth > 980){
+				isAfficheMobile = false;
+				$(".listeRecette").show()
+				$(".listeRecetteMobile").hide();
+			}
+		}
+
+		if(window.innerWidth <= 980 && !isAfficheMobile){
+			isAfficheMobile = true;
+			$(".listeRecetteMobile").show();
+			$(".listeRecette").hide();
+		}else if(window.innerWidth > 980){
+			isAfficheMobile = false;
+			$(".listeRecette").show()
+			$(".listeRecetteMobile").hide();
+		}
+
 
 
 		
