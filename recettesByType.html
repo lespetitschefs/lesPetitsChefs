@@ -54,7 +54,8 @@
 		var url = new URL(url_String);
 		var type = url.searchParams.get("type");
 
-		function completeCombo(typeSecondaire){
+		
+			function completeCombo(typeSecondaire){
 			for(var i in typeSecondaire[type]){
 				var option = " <option id="+typeSecondaire[type][i]+">"+typeSecondaire[type][i]+"</option>"
 				$(option).appendTo($("#combo"));
