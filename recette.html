@@ -38,11 +38,9 @@
 	</div>
 
 <script type="text/javascript">
-
-	var url_String = window.location.href;
-	var url = new URL(url_String);
-	var nom = url.searchParams.get("nom");
-	var type = url.searchParams.get("type");
+	
+	var nom = getUrlVars["nom"];
+	var type = getUrlVars["type"];
 
 	
 	function printIngredients(ingredients, typeIngredients){
