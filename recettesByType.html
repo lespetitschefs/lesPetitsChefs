@@ -57,7 +57,24 @@
 	</div>
 	<script type="text/javascript">
 		
+		function getQueryParams(qs) {
+		    qs = qs.split('+').join(' ');
+
+		    var params = {},
+			tokens,
+			re = /[?&]?([^=]+)=([^&]*)/g;
+
+		    while (tokens = re.exec(qs)) {
+			params[decodeURIComponent(tokens[1])] = decodeURIComponent(tokens[2]);
+		    }
+
+		    return params;
+		}
+		
+		
+	
 		var url_String = window.location.href;
+		console.log(getQueryParams(url_String));
 		var url = new URL(url_String);
 		var type = url.searchParams.get("type");
 
